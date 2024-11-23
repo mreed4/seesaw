@@ -52,7 +52,7 @@ export const useParkLogic = (parks) => {
     address,
     city,
     name: parks[park]?.names?.official ?? "",
-    ageRange: parks[park]?.ageRange?.join(" to ") ?? "Unknown",
+    ageRange: parks[park]?.ageRange?.join(" to ") ?? "unknown",
     feedback: parks[park]?.feedback ?? [],
     getAgeOfPark: (yearBuilt) => {
       const currentYear = new Date().getFullYear();
