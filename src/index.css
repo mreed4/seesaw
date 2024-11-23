@@ -28,6 +28,11 @@ body {
   justify-content: center;
   min-width: 320px;
   min-height: 100vh; */
+  /* margin: 0;
+  height: 100vh;
+  background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+  background-size: 100% 100%;
+  animation: rainbowColorChange 1s linear infinite; */
 }
 
 h1,
@@ -64,4 +69,43 @@ h3 {
   font-family: "Instrument Serif", serif;
   font-weight: 400;
   font-style: italic;
+}
+
+@keyframes rainbowAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes rainbowColorChange {
+  0% {
+    background: red;
+  }
+  14% {
+    background: orange;
+  }
+  28% {
+    background: yellow;
+  }
+  42% {
+    background: green;
+  }
+  57% {
+    background: blue;
+  }
+  71% {
+    background: indigo;
+  }
+  85% {
+    background: violet;
+  }
+  100% {
+    background: red;
+  }
 }

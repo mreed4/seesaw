@@ -47,7 +47,7 @@ export const useParkLogic = (parks) => {
     park,
     setPark,
     percentage,
-    parkBuilt: parks[park]?.yearBuilt ?? "unknown year",
+    parkBuilt: parks[park]?.yearBuilt,
     features: parks[park]?.features ?? {},
     address,
     city,
@@ -56,7 +56,7 @@ export const useParkLogic = (parks) => {
     feedback: parks[park]?.feedback ?? [],
     getAgeOfPark: (yearBuilt) => {
       const currentYear = new Date().getFullYear();
-      if (!yearBuilt) return "";
+      if (!yearBuilt) return "unknown year";
       if (yearBuilt === currentYear) return "(this year 🎉)";
       if (currentYear - yearBuilt === 1) return "(last year)";
       return `(${currentYear - yearBuilt} years ago)`;
