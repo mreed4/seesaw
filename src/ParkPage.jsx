@@ -8,13 +8,10 @@ export const ParkPage = ({ name, address, city, parkBuilt, getAgeOfPark, feature
     <p>
       Built in {parkBuilt} {getAgeOfPark(parkBuilt)}
     </p>
+    <p>For ages {ageRange}</p>
     <h3>Features</h3>
     <table>
       <tbody>
-        <tr>
-          <td>Age range:</td>
-          <td>{ageRange}</td>
-        </tr>
         {Object.entries(features).map(([key, value], i) => (
           <tr key={i}>
             <td>{key}</td>
@@ -27,10 +24,11 @@ export const ParkPage = ({ name, address, city, parkBuilt, getAgeOfPark, feature
     <p>{percentage}% of parents and kids like this park</p>
     <table>
       <tbody>
-        {feedback.map(({ id, userId, review, rating }) => (
+        {feedback.map(({ id, userId, review, rating }, i) => (
           <tr key={`${id}_${userId}`}>
+            <td>{`${i + 1}. `}</td>
             <td>{review}</td>
-            <td>{rating ? "👍" : "👎"}</td>
+            <td>{rating === "Like" ? "👍" : "👎"}</td>
           </tr>
         ))}
       </tbody>
