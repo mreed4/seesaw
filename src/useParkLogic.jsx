@@ -39,15 +39,20 @@ export const useParkLogic = (parks) => {
   const [likes, dislikes] = ratings;
   const percentage = totalRatings ? ((likes / totalRatings) * 100).toFixed(0) : 0;
 
+  // Extract city from the address array
+  const address = parks[park]?.address ?? [];
+  const city = address[1];
+
   return {
     park,
     setPark,
     percentage,
     parkBuilt: parks[park]?.yearBuilt ?? "unknown year",
     features: parks[park]?.features ?? {},
-    address: parks[park]?.address ?? [],
+    address,
+    city,
     name: parks[park]?.names?.official ?? "",
-    ageRange: parks[park]?.ageRange ?? "Unknown",
+    ageRange: parks[park]?.ageRange?.join(" to ") ?? "Unknown",
     feedback: parks[park]?.feedback ?? [],
     getAgeOfPark: (yearBuilt) => {
       const currentYear = new Date().getFullYear();

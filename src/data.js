@@ -154,7 +154,7 @@ const parks = [
     dateAdded: "2024-11-08T12:34:56Z",
     yearBuilt: 1985,
     coords: [38.907192, -77.036871],
-    address: ["567 Riverbend Dr", "Washington", "DC", "20007"],
+    address: ["567 Riverbend Dr", "Washington (DC)", "DC", "20007"],
     ageRange: null,
     features: {
       shaded: true,

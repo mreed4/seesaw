@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 
-export const ParkPage = ({ name, address, parkBuilt, getAgeOfPark, features, ageRange, percentage, feedback }) => (
+export const ParkPage = ({ name, address, city, parkBuilt, getAgeOfPark, features, ageRange, percentage, feedback }) => (
   <>
     <h1>{name}</h1>
+    <h2>{city}</h2> {/* Display the city */}
     <p>{address.join(", ")}</p>
     <p>
       Built in {parkBuilt} {getAgeOfPark(parkBuilt)}
