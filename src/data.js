@@ -30,18 +30,11 @@ const parks = [
     },
     ratings: [452, 78],
     feedback: [
-      {
-        id: 1,
-        userId: 3,
-        review: "Beautiful and relaxing park.",
-        rating: "Like",
-      },
-      {
-        id: 2,
-        userId: 4,
-        review: "Too crowded during weekends.",
-        rating: "Dislike",
-      },
+      { id: 1, userId: 3, review: "Beautiful and relaxing park.", rating: "Like" },
+      { id: 2, userId: 4, review: "Too crowded during weekends.", rating: "Dislike" },
+      { id: 3, userId: 20, review: "Lovely place for a morning run.", rating: "Like" },
+      { id: 4, userId: 21, review: "Wish there were more restrooms.", rating: "Dislike" },
+      { id: 5, userId: 22, review: "Perfect spot for a picnic.", rating: "Like" },
     ],
     media: [
       {
@@ -76,12 +69,10 @@ const parks = [
     },
     ratings: [30, 5],
     feedback: [
-      {
-        id: 1,
-        userId: 6,
-        review: "Great for kids but lacks shade.",
-        rating: "Like",
-      },
+      { id: 1, userId: 6, review: "Great for kids but lacks shade.", rating: "Like" },
+      { id: 2, userId: 23, review: "Clean and well-maintained.", rating: "Like" },
+      { id: 3, userId: 24, review: "Not enough parking spots.", rating: "Dislike" },
+      { id: 4, userId: 25, review: "Good place for a quick playtime.", rating: "Like" },
     ],
     media: [],
   },
@@ -112,18 +103,11 @@ const parks = [
     },
     ratings: [120, 10],
     feedback: [
-      {
-        id: 1,
-        userId: 8,
-        review: "Fantastic for water play!",
-        rating: "Like",
-      },
-      {
-        id: 2,
-        userId: 9,
-        review: "Restrooms need maintenance.",
-        rating: "Dislike",
-      },
+      { id: 1, userId: 8, review: "Fantastic for water play!", rating: "Like" },
+      { id: 2, userId: 9, review: "Restrooms need maintenance.", rating: "Dislike" },
+      { id: 3, userId: 26, review: "Kids love the splash pad.", rating: "Like" },
+      { id: 4, userId: 27, review: "Lack of shaded seating.", rating: "Dislike" },
+      { id: 5, userId: 28, review: "Great spot for family outings.", rating: "Like" },
     ],
     media: [
       {
@@ -154,7 +138,7 @@ const parks = [
     dateAdded: "2024-11-08T12:34:56Z",
     yearBuilt: 1985,
     coords: [38.907192, -77.036871],
-    address: ["567 Riverbend Dr", "Washington (DC)", "DC", "20007"],
+    address: ["567 Riverbend Dr", "Washington", "DC", "20007"],
     ageRange: null,
     features: {
       shaded: true,
@@ -167,12 +151,10 @@ const parks = [
     },
     ratings: [75, 10],
     feedback: [
-      {
-        id: 1,
-        userId: 13,
-        review: "Great place for a picnic.",
-        rating: "Like",
-      },
+      { id: 1, userId: 13, review: "Great place for a picnic.", rating: "Like" },
+      { id: 2, userId: 29, review: "Peaceful and scenic.", rating: "Like" },
+      { id: 3, userId: 30, review: "Not enough trash bins.", rating: "Dislike" },
+      { id: 4, userId: 31, review: "Nice walking trails.", rating: "Like" },
     ],
     media: [
       {
@@ -207,12 +189,10 @@ const parks = [
     },
     ratings: [50, 5],
     feedback: [
-      {
-        id: 1,
-        userId: 15,
-        review: "Perfect for quiet play.",
-        rating: "Like",
-      },
+      { id: 1, userId: 15, review: "Perfect for quiet play.", rating: "Like" },
+      { id: 2, userId: 32, review: "Needs more benches.", rating: "Dislike" },
+      { id: 3, userId: 33, review: "Clean and safe environment.", rating: "Like" },
+      { id: 4, userId: 34, review: "Lacks shaded areas.", rating: "Dislike" },
     ],
     media: [],
   },
@@ -243,28 +223,10 @@ const parks = [
     },
     ratings: [200, 15],
     feedback: [
-      {
-        id: 1,
-        userId: 17,
-        review: "Amazing views and facilities!",
-        rating: "Like",
-      },
-      {
-        id: 2,
-        userId: 18,
-        review: "Wish there were more benches.",
-        rating: "Dislike",
-      },
-    ],
-    media: [
-      {
-        id: 1,
-        userId: 19,
-        dateUploaded: "2024-11-13T11:10:25Z",
-        type: "video",
-        uri: "/videos/seaside_park.mp4",
-        impressions: 250,
-      },
+      { id: 1, userId: 17, review: "Amazing views and facilities!", rating: "Like" },
+      { id: 2, userId: 18, review: "Wish there were more benches.", rating: "Dislike" },
+      { id: 3, userId: 35, review: "Great place for families.", rating: "Like" },
+      { id: 4, userId: 36, review: "Restrooms could be cleaner.", rating: "Dislike" },
     ],
   },
   {

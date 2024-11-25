@@ -34,6 +34,16 @@ export const useParkLogic = (parks) => {
     setPark(initialItem);
   }, []);
 
+  useEffect(() => {
+    // Save scroll position
+    const scrollPosition = window.scrollY;
+
+    // Restore scroll position after render
+    setTimeout(() => {
+      window.scrollTo(0, scrollPosition);
+    }, 0);
+  }, [park]); // Trigger this effect when `park` changes
+
   const ratings = parks[park]?.ratings ?? 0;
   const totalRatings = ratings?.reduce((n, acc) => (n += acc), 0) ?? 0;
   const [likes, dislikes] = ratings;

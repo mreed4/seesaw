@@ -5,12 +5,21 @@ import { useParkContext } from "./ParkContext";
 export const ParkPage = () => {
   const { name, address, city, parkBuilt, getAgeOfPark, features, ageRange, percentage, feedback } = useParkContext();
 
+  const [street, ...cityStateZipParts] = address;
+  const cityStateZip = cityStateZipParts.join(", ");
+
+  const uniqueKey = `${name}-${Date.now()}`;
+
   return (
-    <>
+    <div key={uniqueKey} className="fade-in">
       <section>
         <h1>{name}</h1>
         <h2>{city}</h2>
-        <p>{address.join(", ")}</p>
+        <address>
+          {street}
+          <br />
+          {cityStateZip}
+        </address>
         <p>
           Built in {parkBuilt} {getAgeOfPark(parkBuilt)}
         </p>
@@ -40,13 +49,13 @@ export const ParkPage = () => {
           <tbody>
             {feedback.map(({ id, userId, review, rating }) => (
               <tr key={`${id}_${userId}`}>
+                <td>{rating === "Like" ? "👍" : "👎"}</td>
                 <td>{review}</td>
-                <td>{rating ? "👍" : "👎"}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </section>
-    </>
+    </div>
   );
 };
