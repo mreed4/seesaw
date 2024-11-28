@@ -1,5 +1,3 @@
-/* eslint-disable react/prop-types */
-
 import { useParkContext } from "./ParkContext";
 
 const ParkHeader = () => {
@@ -71,6 +69,7 @@ export const ParkPage = () => {
   const { name } = useParkContext();
   const uniqueKey = `${name}-${Date.now()}`;
 
+  // uniqueKey will force React to reapply the fade-in transition
   return (
     <div key={uniqueKey} className="fade-in">
       <ParkHeader />
