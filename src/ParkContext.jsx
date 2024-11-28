@@ -1,3 +1,6 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react-refresh/only-export-components */
+
 import { createContext, useContext } from "react";
 import { useParkLogic } from "./useParkLogic";
 import parks from "./data";

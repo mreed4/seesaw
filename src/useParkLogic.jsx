@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 import { useState, useEffect, useRef } from "react";
 
 export const useParkLogic = (parks) => {
@@ -27,11 +29,13 @@ export const useParkLogic = (parks) => {
     return () => {
       window.removeEventListener("keyup", handleSpaceKey);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     const initialItem = getNewRandomNumber();
     setPark(initialItem);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const ratings = parks[park]?.ratings ?? 0;
