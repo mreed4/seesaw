@@ -292,6 +292,54 @@ const parks = [
       },
     ],
   },
+  {
+    id: 8,
+    names: {
+      official: "Harmony Grove Park",
+      nick: [
+        {
+          name: "Nature's Haven",
+          userId: 6,
+        },
+        {
+          name: "Tranquil Retreat",
+          userId: 7,
+        },
+      ],
+    },
+    dateAdded: "2024-11-27T10:12:00Z",
+    yearBuilt: 1985,
+    coords: [34.052235, -118.243683],
+    address: ["456 Grove Lane", "Los Angeles", "CA", "90012"],
+    ageRange: [3, 14],
+    features: {
+      shaded: true,
+      waterPad: true,
+      trees: true,
+      grass: true,
+      playground: true,
+      restroom: true,
+      gated: false,
+    },
+    ratings: [389, 120],
+    feedback: [
+      { id: 1, userId: 8, review: "A hidden gem in the city!", rating: "Like" },
+      { id: 2, userId: 9, review: "Not enough parking spaces.", rating: "Dislike" },
+      { id: 3, userId: 10, review: "Kids love the water pad!", rating: "Like" },
+      { id: 4, userId: 11, review: "Could use more shaded areas.", rating: "Dislike" },
+      { id: 5, userId: 12, review: "Amazing spot to relax and unwind.", rating: "Like" },
+    ],
+    media: [
+      {
+        id: 1,
+        userId: 13,
+        dateUploaded: "2024-11-25T14:45:00Z",
+        type: "image",
+        uri: "/images/harmony_grove.jpg",
+        impressions: 320,
+      },
+    ],
+  },
 ];
 
 export default parks;
