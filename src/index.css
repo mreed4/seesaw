@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: #f9f7e8;
-  background-color: #213547;
+  background-color: #292d3e;
 
   transition: color 250ms ease-in, background-color 250ms ease-in-out;
 
@@ -57,13 +57,22 @@ td {
   border: 0;
 }
 
+.park-container {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
 .fade-in {
-  animation: fadeIn 250ms ease-in-out;
+  animation: fadeIn 0.25s ease-in forwards;
+}
+
+a {
+  color: inherit;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    color: #292d3e;
     background-color: #f9f7e8;
   }
 

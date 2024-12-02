@@ -3,29 +3,36 @@
 import { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ParkContext } from "../context/ParkContext";
-import { toKebabCase } from "../utils/kebabCase";
-
-const ParkDetails = ({ park }) => (
-  <div>
-    <h1>{park.name}</h1>
-    <p>Location: {park.location}</p>
-    <p>City: {park.city}</p>
-  </div>
-);
-
-const ParkNotFound = () => <p>Park not found.</p>;
+import { useParkSelection } from "../hooks/useParkSelection";
 
 const Park = () => {
   const { parks } = useContext(ParkContext);
-  const { city, name } = useParams();
+  const { city } = useParams();
 
-  // Extract the park name and ID from the "name-id" parameter
-  const [parkName, parkId] = name.split(/-(\d+)$/);
-  const id = parseInt(parkId, 10);
+  // Use custom hook for park selection and random park functionality
+  const { park } = useParkSelection(parks, city);
 
-  const park = parks.find((p) => toKebabCase(p.city) === city && toKebabCase(p.name) === parkName && p.id === id);
+  if (!park) {
+    return <ParkNotFound />;
+  }
 
-  return park ? <ParkDetails park={park} /> : <ParkNotFound />;
+  return <ParkDetails park={park} />;
 };
+
+function ParkDetails({ park }) {
+  const uniqueKey = `${park.name}-${Date.now()}`;
+
+  return (
+    <div key={uniqueKey} className="fade-in">
+      <h1>{park.name}</h1>
+      <p>Location: {park.location}</p>
+      <p>City: {park.city}</p>
+    </div>
+  );
+}
+
+function ParkNotFound() {
+  return <p>Park not found.</p>;
+}
 
 export default Park;

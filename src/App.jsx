@@ -14,7 +14,7 @@ function App() {
         <Router>
           <Routes>
             <Route path="/" element={<AllParks />} />
-            <Route path="/park/:city/:name" element={<Park />} />
+            <Route path="/:city/:name" element={<Park />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
