@@ -29,7 +29,11 @@ h1 {
   color: #cca030;
 }
 
-h2,
+h2 {
+  color: white;
+}
+
+/* h2, */
 h3 {
   opacity: 0.8;
 }
@@ -57,13 +61,11 @@ td {
   border: 0;
 }
 
-.park-container {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-}
-
 .fade-in {
   animation: fadeIn 0.25s ease-in forwards;
+}
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
 }
 
 a {
@@ -74,6 +76,10 @@ a {
   :root {
     color: #292d3e;
     background-color: #f9f7e8;
+  }
+
+  h2 {
+    color: black;
   }
 
   th,

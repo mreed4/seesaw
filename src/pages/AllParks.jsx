@@ -12,8 +12,8 @@ const AllParks = () => {
       <ul>
         {parks.map((park) => (
           <li key={park.id}>
-            <Link to={`/park/${generateParkUrl(park.city, park.name, park.id)}`}>
-              {park.name} ({park.city})
+            <Link to={`/${generateParkUrl(park.address[1], park.names.official, park.id)}`}>
+              {park.names.official} ({park.address[1]})
             </Link>
           </li>
         ))}
