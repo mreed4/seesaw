@@ -1,4 +1,4 @@
-// src/hooks/useParkLogic.js
+/* eslint-disable no-unused-vars */
 
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -38,6 +38,7 @@ export const useParkLogic = (parks) => {
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parks, city]);
 
   return { park, handleRandomPark };

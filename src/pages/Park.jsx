@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+/* eslint-disable no-unused-vars */
 
 import { useContext } from "react";
 import { Link } from "react-router-dom";
@@ -39,12 +39,10 @@ const ParkHeader = () => {
 
   return (
     <section>
-      <h1>
-        <Link to="/">
-          <span className="material-symbols-outlined">home</span>
-        </Link>
-        {name}
-      </h1>
+      <Link to="/">
+        <span className="material-symbols-outlined">home</span>
+      </Link>
+      <h1>{name}</h1>
       <h2>{city}</h2>
       <address>
         {street}

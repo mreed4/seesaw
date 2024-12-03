@@ -9,7 +9,7 @@ const AllParks = () => {
   return (
     <div>
       <h1>All Parks</h1>
-      <ul>
+      <ol className="parks-grid">
         {parks.map((park) => (
           <li key={park.id}>
             <Link to={`/${generateParkUrl(park.address[1], park.names.official, park.id)}`}>
@@ -17,7 +17,7 @@ const AllParks = () => {
             </Link>
           </li>
         ))}
-      </ul>
+      </ol>
     </div>
   );
 };
