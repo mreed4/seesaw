@@ -1,31 +1,31 @@
 import { Link } from "react-router-dom";
-import parks from "./data";
+import playgrounds from "./data";
 
 const toKebabCase = (str) => {
   return str.toLowerCase().replace(/ /g, "-");
 };
 
-const ParkList = () => {
+const PlaygroundList = () => {
   return (
     <section>
-      <h1>Park List</h1>
+      <h1>Playground List</h1>
       <table>
         <thead>
           <tr>
-            <th>Park Name</th>
+            <th>Playground Name</th>
             <th>City</th>
             <th>Year Built</th>
           </tr>
         </thead>
         <tbody>
-          {parks.map((park, index) => {
-            const { address, names, yearBuilt } = park;
+          {playgrounds.map((playground, index) => {
+            const { address, names, yearBuilt } = playground;
             const [street, city, state, zip] = address;
             const { official: name } = names;
             return (
               <tr key={index}>
                 <td>
-                  <Link to={`/parks/${toKebabCase(city)}/${index}`}>{name}</Link>
+                  <Link to={`/playgrounds/${toKebabCase(city)}/${index}`}>{name}</Link>
                 </td>
                 <td>{city}</td>
                 <td>{yearBuilt || "-"}</td>
@@ -38,4 +38,4 @@ const ParkList = () => {
   );
 };
 
-export default ParkList;
+export default PlaygroundList;

@@ -3,15 +3,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const useParkLogic = (parks, initialParkIndex) => {
-  const [park, setPark] = useState(initialParkIndex);
+export const usePlaygroundLogic = (playgrounds, initialPlaygroundIndex) => {
+  const [playground, setPlayground] = useState(initialPlaygroundIndex);
   const navigate = useNavigate();
 
   const handleSpaceKey = (event) => {
     if (event.code === "Space" && event.ctrlKey) {
-      const newRandomNumber = Math.floor(Math.random() * parks.length);
-      setPark(newRandomNumber);
-      navigate(`/parks/${toKebabCase(parks[newRandomNumber].address[1])}/${newRandomNumber}`);
+      const newRandomNumber = Math.floor(Math.random() * playgrounds.length);
+      setPlayground(newRandomNumber);
+      navigate(`/playgrounds/${toKebabCase(playgrounds[newRandomNumber].address[1])}/${newRandomNumber}`);
     }
   };
 
@@ -25,32 +25,32 @@ export const useParkLogic = (parks, initialParkIndex) => {
   }, []);
 
   useEffect(() => {
-    if (parks[park]?.names?.official) {
-      document.title = `Seesaw - ${parks[park].names.official}`;
+    if (playgrounds[playground]?.names?.official) {
+      document.title = `Seesaw - ${playgrounds[playground].names.official}`;
     }
-  }, [park, parks]);
+  }, [playground, playgrounds]);
 
-  const ratings = Array.isArray(parks[park]?.ratings) ? parks[park].ratings : [];
+  const ratings = Array.isArray(playgrounds[playground]?.ratings) ? playgrounds[playground].ratings : [];
   const totalRatings = ratings.reduce((n, acc) => (n += acc), 0);
   const [likes, dislikes] = ratings;
   const percentage = totalRatings ? ((likes / totalRatings) * 100).toFixed(0) : 0;
 
   // Extract city from the address array
-  const address = parks[park]?.address ?? [];
+  const address = playgrounds[playground]?.address ?? [];
   const [street, city, state, zip] = address;
 
   return {
-    park,
-    setPark,
+    playground,
+    setPlayground,
     percentage,
-    parkBuilt: parks[park]?.yearBuilt,
-    features: parks[park]?.features ?? {},
+    playgroundBuilt: playgrounds[playground]?.yearBuilt,
+    features: playgrounds[playground]?.features ?? {},
     address,
     city,
-    name: parks[park]?.names?.official ?? "",
-    ageRange: parks[park]?.ageRange?.join(" to ") ?? "unknown",
-    feedback: parks[park]?.feedback ?? [],
-    getAgeOfPark: (yearBuilt) => {
+    name: playgrounds[playground]?.names?.official ?? "",
+    ageRange: playgrounds[playground]?.ageRange?.join(" to ") ?? "unknown",
+    feedback: playgrounds[playground]?.feedback ?? [],
+    getAgeOfPlayground: (yearBuilt) => {
       const currentYear = new Date().getFullYear();
       if (!yearBuilt) return "unknown year";
       if (yearBuilt === currentYear) return "(this year 🎉)";

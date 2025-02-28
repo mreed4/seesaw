@@ -49,19 +49,22 @@ tbody td {
   border-top: 0; /* Removes top border from tbody cells */
 }
 
+a {
+  color: inherit; /* Inherits text color */
+  text-decoration: none; /* Removes underline from links */
+  opacity: 0.8;
+  transition: opacity 250ms ease-in-out; /* Adds transition for color change */
+}
+
+a:hover {
+  opacity: 1;
+}
+
 li a {
   /* display: table-cell; */
   padding: 8px; /* Adds some spacing inside cells */
   border: 1px solid hsla(52.9, 58.6%, 94.3%, 20%); /* Defines a 1px border */
   border-bottom-width: 0; /* Removes bottom border */
-  text-decoration: none; /* Removes underline from links */
-  color: inherit; /* Inherits text color */
-  opacity: 0.8;
-  transition: color 250ms ease-in-out; /* Adds transition for color change */
-}
-
-li a:hover {
-  opacity: 1;
 }
 
 li:last-child a {

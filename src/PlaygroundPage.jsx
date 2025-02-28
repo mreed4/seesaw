@@ -1,15 +1,15 @@
-import { useParkContext } from "./ParkContext";
+import { usePlaygroundContext } from "./PlaygroundContext";
 import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 
-const ParkHeader = () => {
-  const { name, address, city, parkBuilt, getAgeOfPark, ageRange } = useParkContext();
+const PlaygroundHeader = () => {
+  const { name, address, city, playgroundBuilt, getAgeOfPlayground, ageRange } = usePlaygroundContext();
   const [street, ...cityStateZipParts] = address;
   const cityStateZip = cityStateZipParts.join(", ");
 
   return (
     <section>
-      <Link to="/">All Parks</Link>
+      <Link to="/">All Playgrounds</Link>
       <h1>{name}</h1>
       <h2>{city}</h2>
       <address>
@@ -18,21 +18,21 @@ const ParkHeader = () => {
         {cityStateZip}
       </address>
       <p>
-        Built in {parkBuilt} {getAgeOfPark(parkBuilt)}
+        Built in {playgroundBuilt} {getAgeOfPlayground(playgroundBuilt)}
       </p>
       <p>For ages {ageRange}</p>
     </section>
   );
 };
 
-const ParkFeatures = () => {
-  const { features } = useParkContext();
+const PlaygroundFeatures = () => {
+  const { features } = usePlaygroundContext();
 
   return (
     <section>
       <h3>Features</h3>
       <table>
-        <caption className="sr-only">List of park features</caption>
+        <caption className="sr-only">List of playground features</caption>
         <thead>
           <tr>
             <th>Feature</th>
@@ -52,13 +52,13 @@ const ParkFeatures = () => {
   );
 };
 
-const ParkFeedback = () => {
-  const { percentage, feedback } = useParkContext();
+const PlaygroundFeedback = () => {
+  const { percentage, feedback } = usePlaygroundContext();
 
   return (
     <section>
       <h3>What do parents think?</h3>
-      <p>{percentage}% of parents and kids like this park</p>
+      <p>{percentage}% of parents and kids like this playground</p>
       <table>
         <caption className="sr-only">Feedback from parents</caption>
         <thead>
@@ -80,27 +80,27 @@ const ParkFeedback = () => {
   );
 };
 
-const ParkPage = () => {
+const PlaygroundPage = () => {
   // eslint-disable-next-line no-unused-vars
   const { id, city } = useParams();
-  const { setPark } = useParkContext();
+  const { setPlayground } = usePlaygroundContext();
 
   useEffect(() => {
-    setPark(Number(id));
-  }, [id, setPark]);
+    setPlayground(Number(id));
+  }, [id, setPlayground]);
 
-  const { name } = useParkContext();
+  const { name } = usePlaygroundContext();
   const uniqueKey = `${name}-${Date.now()}`;
 
   // uniqueKey will force React to reapply the fade-in transition
   return (
     <div key={uniqueKey} className="fade-in">
-      <ParkHeader />
-      <ParkFeatures />
-      <ParkFeedback />
+      <PlaygroundHeader />
+      <PlaygroundFeatures />
+      <PlaygroundFeedback />
     </div>
   );
 };
 
-export default ParkPage;
+export default PlaygroundPage;
 // Note: The `fade-in` class is assumed to be defined in your CSS for the transition effect.
