@@ -1,5 +1,5 @@
 import { usePlaygroundContext } from "./PlaygroundContext";
-import { useParams, Link } from "react-router-dom";
+import { useParams, useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 
 const PlaygroundHeader = () => {
@@ -82,15 +82,19 @@ const PlaygroundFeedback = () => {
 
 const PlaygroundPage = () => {
   // eslint-disable-next-line no-unused-vars
-  const { id, city } = useParams();
+  const { city, name } = useParams();
+  const location = useLocation();
   const { setPlayground } = usePlaygroundContext();
 
   useEffect(() => {
-    setPlayground(Number(id));
-  }, [id, setPlayground]);
+    const { id } = location.state || {};
+    if (id) {
+      setPlayground(id);
+    }
+  }, [location.state, setPlayground]);
 
-  const { name } = usePlaygroundContext();
-  const uniqueKey = `${name}-${Date.now()}`;
+  const { name: playgroundName } = usePlaygroundContext();
+  const uniqueKey = `${playgroundName}-${Date.now()}`;
 
   // uniqueKey will force React to reapply the fade-in transition
   return (

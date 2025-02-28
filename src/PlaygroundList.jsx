@@ -18,14 +18,16 @@ const PlaygroundList = () => {
           </tr>
         </thead>
         <tbody>
-          {playgrounds.map((playground, index) => {
-            const { address, names, yearBuilt } = playground;
+          {playgrounds.map((playground) => {
+            const { id, address, names, yearBuilt } = playground;
             const [street, city, state, zip] = address;
             const { official: name } = names;
             return (
-              <tr key={index}>
+              <tr key={id}>
                 <td>
-                  <Link to={`/playgrounds/${toKebabCase(city)}/${index}`}>{name}</Link>
+                  <Link to={`/playgrounds/${toKebabCase(city)}/${toKebabCase(name)}`} state={{ id }}>
+                    {name}
+                  </Link>
                 </td>
                 <td>{city}</td>
                 <td>{yearBuilt || "-"}</td>

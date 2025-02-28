@@ -13,6 +13,4 @@ export const PlaygroundProvider = ({ children }) => {
   return <PlaygroundContext.Provider value={playgroundData}>{children}</PlaygroundContext.Provider>;
 };
 
-export const usePlaygroundContext = () => {
-  return useContext(PlaygroundContext);
-};
+export const usePlaygroundContext = () => useContext(PlaygroundContext);

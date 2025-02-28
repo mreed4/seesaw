@@ -28,6 +28,35 @@ const playgrounds = [
     ],
     media: [],
   },
+  {
+    id: 2,
+    names: {
+      official: "Maple Park",
+      nick: "Maple Playground",
+    },
+    dateAdded: "2024-12-15T10:45:00Z",
+    yearBuilt: 2010,
+    coords: [34.052235, -118.243683],
+    address: ["789 Maple Ave", "Los Angeles", "CA", "90001"],
+    ageRange: [3, 12],
+    features: {
+      shaded: true,
+      waterPad: true,
+      trees: true,
+      grass: true,
+      playground: true,
+      restroom: true,
+      gated: true,
+    },
+    ratings: [50, 10],
+    feedback: [
+      { id: 5, userId: 30, review: "Amazing playground with lots of shade.", rating: "Like" },
+      { id: 6, userId: 31, review: "Kids love the water pad!", rating: "Like" },
+      { id: 7, userId: 32, review: "Very clean and safe.", rating: "Like" },
+      { id: 8, userId: 33, review: "A bit crowded on weekends.", rating: "Dislike" },
+    ],
+    media: [],
+  },
 ];
 
 export default playgrounds;
