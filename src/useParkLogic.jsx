@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
 
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const useParkLogic = (parks) => {
   const previousIndex = useRef(null);
   const [park, setPark] = useState(() => Math.floor(Math.random() * parks.length));
+  const navigate = useNavigate();
 
   const getNewRandomNumber = () => {
     let newIndex;
@@ -20,6 +22,7 @@ export const useParkLogic = (parks) => {
     if (event.code === "Space") {
       const newRandomNumber = getNewRandomNumber();
       setPark(newRandomNumber);
+      navigate(`/park/${newRandomNumber}`);
     }
   };
 
@@ -35,11 +38,12 @@ export const useParkLogic = (parks) => {
   useEffect(() => {
     const initialItem = getNewRandomNumber();
     setPark(initialItem);
+    navigate(`/park/${initialItem}`);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const ratings = parks[park]?.ratings ?? 0;
-  const totalRatings = ratings?.reduce((n, acc) => (n += acc), 0) ?? 0;
+  const ratings = Array.isArray(parks[park]?.ratings) ? parks[park].ratings : [];
+  const totalRatings = ratings.reduce((n, acc) => (n += acc), 0);
   const [likes, dislikes] = ratings;
   const percentage = totalRatings ? ((likes / totalRatings) * 100).toFixed(0) : 0;
 

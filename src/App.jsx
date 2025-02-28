@@ -1,13 +1,19 @@
-import "./App.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { ParkProvider } from "./ParkContext";
-import { ParkPage } from "./ParkPage";
+import ParkList from "./ParkList";
+import ParkPage from "./ParkPage";
 
-function App() {
+const App = () => {
   return (
-    <ParkProvider>
-      <ParkPage />
-    </ParkProvider>
+    <Router>
+      <ParkProvider>
+        <Routes>
+          <Route path="/" element={<ParkList />} />
+          <Route path="/park/:id" element={<ParkPage />} />
+        </Routes>
+      </ParkProvider>
+    </Router>
   );
-}
+};
 
 export default App;

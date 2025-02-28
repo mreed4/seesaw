@@ -1,4 +1,6 @@
 import { useParkContext } from "./ParkContext";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 
 const ParkHeader = () => {
   const { name, address, city, parkBuilt, getAgeOfPark, ageRange } = useParkContext();
@@ -65,7 +67,14 @@ const ParkFeedback = () => {
   );
 };
 
-export const ParkPage = () => {
+const ParkPage = () => {
+  const { id } = useParams();
+  const { setPark } = useParkContext();
+
+  useEffect(() => {
+    setPark(Number(id));
+  }, [id, setPark]);
+
   const { name } = useParkContext();
   const uniqueKey = `${name}-${Date.now()}`;
 
@@ -78,3 +87,6 @@ export const ParkPage = () => {
     </div>
   );
 };
+
+export default ParkPage;
+// Note: The `fade-in` class is assumed to be defined in your CSS for the transition effect.
