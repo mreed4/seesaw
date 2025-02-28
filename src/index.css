@@ -45,6 +45,33 @@ td {
   text-align: left; /* Optional: Aligns text to the left */
 }
 
+ul {
+  list-style-type: none; /* Removes bullets from lists */
+  padding: 0;
+}
+
+li {
+  display: table-row; /* Makes list items appear as table rows */
+}
+
+li a {
+  display: table-cell; /* Makes links appear as table cells */
+  padding: 8px; /* Adds some spacing inside cells */
+  border: 1px solid hsla(52.9, 58.6%, 94.3%, 20%); /* Defines a 1px border */
+  border-bottom-width: 0; /* Removes bottom border */
+  text-decoration: none; /* Removes underline from links */
+  color: inherit; /* Inherits text color */
+  transition: color 250ms ease-in-out; /* Adds transition for color change */
+}
+
+li a:hover {
+  color: #cca030; /* Changes color to gold on hover */
+}
+
+li:last-child a {
+  border-bottom-width: 1px; /* Adds bottom border to the last list item */
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -68,8 +95,13 @@ td {
   }
 
   th,
-  td {
+  td,
+  li a {
     border-color: hsla(208.4, 36.5%, 20.4%, 20%);
+  }
+
+  li a:hover {
+    color: #cca030; /* Changes color to gold on hover in light mode */
   }
 }
 

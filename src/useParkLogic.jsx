@@ -1,28 +1,17 @@
 /* eslint-disable no-unused-vars */
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export const useParkLogic = (parks) => {
-  const previousIndex = useRef(null);
-  const [park, setPark] = useState(() => Math.floor(Math.random() * parks.length));
+export const useParkLogic = (parks, initialParkIndex) => {
+  const [park, setPark] = useState(initialParkIndex);
   const navigate = useNavigate();
-
-  const getNewRandomNumber = () => {
-    let newIndex;
-    do {
-      newIndex = Math.floor(Math.random() * parks.length);
-    } while (newIndex === previousIndex.current);
-
-    previousIndex.current = newIndex;
-    return newIndex;
-  };
 
   const handleSpaceKey = (event) => {
     if (event.code === "Space") {
-      const newRandomNumber = getNewRandomNumber();
+      const newRandomNumber = Math.floor(Math.random() * parks.length);
       setPark(newRandomNumber);
-      navigate(`/park/${newRandomNumber}`);
+      navigate(`/parks/${toKebabCase(parks[newRandomNumber].address[1])}/${newRandomNumber}`);
     }
   };
 
@@ -36,11 +25,10 @@ export const useParkLogic = (parks) => {
   }, []);
 
   useEffect(() => {
-    const initialItem = getNewRandomNumber();
-    setPark(initialItem);
-    navigate(`/park/${initialItem}`);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (parks[park]?.names?.official) {
+      document.title = `Seesaw - ${parks[park].names.official}`;
+    }
+  }, [park, parks]);
 
   const ratings = Array.isArray(parks[park]?.ratings) ? parks[park].ratings : [];
   const totalRatings = ratings.reduce((n, acc) => (n += acc), 0);
@@ -70,4 +58,8 @@ export const useParkLogic = (parks) => {
       return `(${currentYear - yearBuilt} years ago)`;
     },
   };
+};
+
+const toKebabCase = (str) => {
+  return str.toLowerCase().replace(/ /g, "-");
 };

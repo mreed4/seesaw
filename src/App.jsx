@@ -9,7 +9,7 @@ const App = () => {
       <ParkProvider>
         <Routes>
           <Route path="/" element={<ParkList />} />
-          <Route path="/park/:id" element={<ParkPage />} />
+          <Route path="/parks/:city/:id" element={<ParkPage />} />
         </Routes>
       </ParkProvider>
     </Router>

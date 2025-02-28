@@ -68,7 +68,8 @@ const ParkFeedback = () => {
 };
 
 const ParkPage = () => {
-  const { id } = useParams();
+  // eslint-disable-next-line no-unused-vars
+  const { id, city } = useParams();
   const { setPark } = useParkContext();
 
   useEffect(() => {
