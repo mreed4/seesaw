@@ -9,13 +9,31 @@ const ParkList = () => {
   return (
     <section>
       <h1>Park List</h1>
-      <ul>
-        {parks.map((park, index) => (
-          <li key={index}>
-            <Link to={`/parks/${toKebabCase(park.address[1])}/${index}`}>{park.names.official}</Link>
-          </li>
-        ))}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Park Name</th>
+            <th>City</th>
+            <th>Year Built</th>
+          </tr>
+        </thead>
+        <tbody>
+          {parks.map((park, index) => {
+            const { address, names, yearBuilt } = park;
+            const [street, city, state, zip] = address;
+            const { official: name } = names;
+            return (
+              <tr key={index}>
+                <td>
+                  <Link to={`/parks/${toKebabCase(city)}/${index}`}>{name}</Link>
+                </td>
+                <td>{city}</td>
+                <td>{yearBuilt || "-"}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </section>
   );
 };

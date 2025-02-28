@@ -340,6 +340,48 @@ const parks = [
       },
     ],
   },
+  {
+    id: 9,
+    names: {
+      official: "Green Meadows Park",
+      nick: [
+        {
+          name: "The Green Spot",
+          userId: 19,
+        },
+      ],
+    },
+    dateAdded: "2024-12-01T09:00:00Z",
+    yearBuilt: 2005,
+    coords: [41.878113, -87.629799],
+    address: ["789 Meadow Ln", "Chicago", "IL", "60605"],
+    ageRange: [2, 10],
+    features: {
+      shaded: true,
+      waterPad: false,
+      trees: true,
+      grass: true,
+      playground: true,
+      restroom: true,
+      gated: false,
+    },
+    ratings: [150, 20],
+    feedback: [
+      { id: 1, userId: 20, review: "Lovely park with lots of greenery.", rating: "Like" },
+      { id: 2, userId: 21, review: "Needs more playground equipment.", rating: "Dislike" },
+      { id: 3, userId: 22, review: "Great place for a family picnic.", rating: "Like" },
+    ],
+    media: [
+      {
+        id: 1,
+        userId: 23,
+        dateUploaded: "2024-12-02T10:00:00Z",
+        type: "image",
+        uri: "/images/green_meadows.jpg",
+        impressions: 200,
+      },
+    ],
+  },
 ];
 
 export default parks;

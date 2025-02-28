@@ -8,7 +8,7 @@ export const useParkLogic = (parks, initialParkIndex) => {
   const navigate = useNavigate();
 
   const handleSpaceKey = (event) => {
-    if (event.code === "Space") {
+    if (event.code === "Space" && event.ctrlKey) {
       const newRandomNumber = Math.floor(Math.random() * parks.length);
       setPark(newRandomNumber);
       navigate(`/parks/${toKebabCase(parks[newRandomNumber].address[1])}/${newRandomNumber}`);

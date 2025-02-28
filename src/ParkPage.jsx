@@ -1,5 +1,5 @@
 import { useParkContext } from "./ParkContext";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useEffect } from "react";
 
 const ParkHeader = () => {
@@ -9,6 +9,7 @@ const ParkHeader = () => {
 
   return (
     <section>
+      <Link to="/">All Parks</Link>
       <h1>{name}</h1>
       <h2>{city}</h2>
       <address>
@@ -32,6 +33,12 @@ const ParkFeatures = () => {
       <h3>Features</h3>
       <table>
         <caption className="sr-only">List of park features</caption>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Available</th>
+          </tr>
+        </thead>
         <tbody>
           {Object.entries(features).map(([key, value], i) => (
             <tr key={i}>
@@ -54,6 +61,12 @@ const ParkFeedback = () => {
       <p>{percentage}% of parents and kids like this park</p>
       <table>
         <caption className="sr-only">Feedback from parents</caption>
+        <thead>
+          <tr>
+            <th>Rating</th>
+            <th>Review</th>
+          </tr>
+        </thead>
         <tbody>
           {feedback.map(({ id, userId, review, rating }) => (
             <tr key={`${id}_${userId}`}>
