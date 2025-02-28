@@ -4,7 +4,11 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
-  const [playground, setPlayground] = useState(initialPlaygroundId);
+  const [playground, setPlayground] = useState(() => {
+    // Retrieve the selected playground ID from local storage
+    const savedPlaygroundId = localStorage.getItem("selectedPlaygroundId");
+    return savedPlaygroundId ? parseInt(savedPlaygroundId, 10) : initialPlaygroundId;
+  });
   const [lastRandomNumber, setLastRandomNumber] = useState(null);
   const navigate = useNavigate();
 
@@ -42,6 +46,8 @@ export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
     if (selectedPlayground?.names?.official) {
       document.title = `Seesaw - ${selectedPlayground.names.official}`;
     }
+    // Store the selected playground ID in local storage
+    localStorage.setItem("selectedPlaygroundId", playground);
   }, [playground, playgrounds]);
 
   const selectedPlayground = playgrounds.find((p) => p.id === playground) || {};

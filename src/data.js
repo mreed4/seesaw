@@ -57,6 +57,35 @@ const playgrounds = [
     ],
     media: [],
   },
+  {
+    id: 3,
+    names: {
+      official: "Trolley Barn Park",
+      nick: null,
+    },
+    dateAdded: "2025-02-10T14:00:00Z",
+    yearBuilt: 1990,
+    coords: [32.758091, -117.145817],
+    address: ["1943 Adams Ave", "San Diego", "CA", "92116"],
+    ageRange: [2, 12],
+    features: {
+      shaded: true,
+      waterPad: false,
+      trees: true,
+      grass: true,
+      playground: true,
+      restroom: false,
+      gated: false,
+    },
+    ratings: [45, 7],
+    feedback: [
+      { id: 13, userId: 38, review: "Lovely park with a great playground.", rating: "Like" },
+      { id: 14, userId: 39, review: "Perfect for family picnics.", rating: "Like" },
+      { id: 15, userId: 40, review: "Could use more parking.", rating: "Dislike" },
+      { id: 16, userId: 41, review: "Well-maintained and clean.", rating: "Like" },
+    ],
+    media: [],
+  },
 ];
 
 export default playgrounds;

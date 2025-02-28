@@ -90,6 +90,12 @@ const PlaygroundPage = () => {
     const { id } = location.state || {};
     if (id) {
       setPlayground(id);
+    } else {
+      // Retrieve the selected playground ID from local storage
+      const savedPlaygroundId = localStorage.getItem("selectedPlaygroundId");
+      if (savedPlaygroundId) {
+        setPlayground(parseInt(savedPlaygroundId, 10));
+      }
     }
   }, [location.state, setPlayground]);
 
@@ -107,4 +113,3 @@ const PlaygroundPage = () => {
 };
 
 export default PlaygroundPage;
-// Note: The `fade-in` class is assumed to be defined in your CSS for the transition effect.
