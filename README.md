@@ -1,8 +1,11 @@
-# React + Vite
+# Playground Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to Playground Finder! This is a fun little app designed to help you find playgrounds in your area, or even beyond. Whether you're looking for a new place for your kids to play or just want to explore different playgrounds, this app has got you covered.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Search for playgrounds by city
+- View detailed information about each playground
+- Navigate easily with intuitive routes
+- Get redirected to the playground list if you visit the home page
+- Enjoy a seamless experience with our user-friendly interface
