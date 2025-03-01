@@ -3,16 +3,20 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
+// Custom hook to manage playground logic
 export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
+  // State management
   const [playground, setPlayground] = useState(() => {
-    // Retrieve the selected playground ID from local storage
     const savedPlaygroundId = localStorage.getItem("selectedPlaygroundId");
     return savedPlaygroundId ? parseInt(savedPlaygroundId, 10) : initialPlaygroundId;
   });
   const [lastRandomNumber, setLastRandomNumber] = useState(null);
+
+  // Navigation hooks
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Event handler for space key
   const handleSpaceKey = (event) => {
     if (event.code === "Space" && event.ctrlKey) {
       const newRandomNumber = generateUniqueRandomNumber(playgrounds.length, lastRandomNumber);
@@ -22,6 +26,7 @@ export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
     }
   };
 
+  // Generate a unique random number
   const generateUniqueRandomNumber = (max, lastNumber) => {
     let newRandomNumber;
     do {
@@ -30,11 +35,13 @@ export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
     return newRandomNumber;
   };
 
+  // Navigate to a specific playground
   const navigateToPlayground = (playground) => {
     const { address, names } = playground;
     navigate(`/playgrounds/${toKebabCase(address[1])}/${toKebabCase(names.official)}`);
   };
 
+  // Effect to handle keyup event
   useEffect(() => {
     window.addEventListener("keyup", handleSpaceKey);
     return () => {
@@ -43,19 +50,20 @@ export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Effect to update document title and local storage
   useEffect(() => {
     const selectedPlayground = playgrounds.find((p) => p.id === playground);
     if (location.pathname.includes("/playgrounds/") && selectedPlayground?.names?.official) {
       document.title = `Seesaw - ${selectedPlayground.names.official}`;
     } else if (location.pathname === "/playgrounds") {
-      document.title = "Seesaw - All Playgrounds"; // Title for playgrounds route
+      document.title = "Seesaw - All Playgrounds";
     } else {
-      document.title = "Seesaw - All Parks"; // Default title
+      document.title = "Seesaw - All Parks";
     }
-    // Store the selected playground ID in local storage
     localStorage.setItem("selectedPlaygroundId", playground);
   }, [playground, playgrounds, location.pathname]);
 
+  // Calculate ratings and other playground details
   const selectedPlayground = playgrounds.find((p) => p.id === playground) || {};
   const ratings = Array.isArray(selectedPlayground.ratings) ? selectedPlayground.ratings : [];
   const totalRatings = ratings.reduce((n, acc) => (n += acc), 0);
@@ -80,6 +88,7 @@ export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
   };
 };
 
+// Helper function to get the age of the playground
 const getAgeOfPlayground = (yearBuilt) => {
   const currentYear = new Date().getFullYear();
   if (!yearBuilt) return "unknown year";
@@ -88,6 +97,7 @@ const getAgeOfPlayground = (yearBuilt) => {
   return `(${currentYear - yearBuilt} years ago)`;
 };
 
+// Helper function to convert string to kebab case
 const toKebabCase = (str) => {
   return str.toLowerCase().replace(/ /g, "-");
 };

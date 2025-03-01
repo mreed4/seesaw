@@ -1,4 +1,4 @@
-import { usePlaygroundContext } from "./PlaygroundContext";
+import { usePlaygroundContext } from "../context/PlaygroundContext";
 import { useParams, useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -43,7 +43,8 @@ const PlaygroundFeatures = () => {
           {Object.entries(features).map(([key, value], i) => (
             <tr key={i}>
               <td>{key}</td>
-              <td>{value ? <span>Yes</span> : "No"}</td>
+              {/* <td>{value ? <span>Yes</span> : "No"}</td> */}
+              <td>{String(value)}</td>
             </tr>
           ))}
         </tbody>

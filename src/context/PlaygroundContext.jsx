@@ -2,8 +2,8 @@
 /* eslint-disable react-refresh/only-export-components */
 
 import { createContext, useContext } from "react";
-import { usePlaygroundLogic } from "./usePlaygroundLogic";
-import playgrounds from "./data";
+import { usePlaygroundLogic } from "../hooks/usePlaygroundLogic";
+import playgrounds from "../data";
 
 const PlaygroundContext = createContext();
 
