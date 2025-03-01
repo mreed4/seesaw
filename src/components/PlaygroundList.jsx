@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import playgrounds from "../data";
+import playgrounds from "../data/data";
 
 const toKebabCase = (str) => {
   return str.toLowerCase().replace(/ /g, "-");
@@ -20,6 +20,7 @@ const PlaygroundList = () => {
         <tbody>
           {playgrounds.map((playground) => {
             const { id, address, names, yearBuilt } = playground;
+            // eslint-disable-next-line no-unused-vars
             const [street, city, state, zip] = address;
             const { official: name } = names;
             return (

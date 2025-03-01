@@ -24,7 +24,7 @@ h1 {
 
 h2,
 h3 {
-  opacity: 0.8;
+  /* opacity: 0.8; */
 }
 
 table {
@@ -85,18 +85,37 @@ li:last-child a {
 
 .shortcut-message {
   position: fixed;
-  bottom: 0;
-  width: 100%;
+  top: 1em; /* Move to the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust position to center */
+  width: auto; /* Change from 100% to auto */
+  max-width: 90%; /* Optional: Limit the maximum width */
   text-align: center;
   padding: 10px;
-  background: #f1f1f1;
+  background: rgba(241, 241, 241, 0.7); /* Light background with opacity for dark mode */
   border-top: 1px solid #ccc;
+  border-radius: 8px; /* Add rounded borders */
+  user-select: none; /* Make text non-selectable */
+  cursor: default; /* Change cursor to arrow */
+}
+
+.key {
+  display: inline-block;
+  padding: 0.2em 0.4em;
+  margin: 0 0.1em;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #f1f1f1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-family: monospace;
+  font-size: 0.9em;
+  color: #333;
 }
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #f9f7e8;
+    background-color: #f9f6f1; /* Change background color */
   }
 
   th,
@@ -111,6 +130,11 @@ li:last-child a {
 
   li a:hover {
     opacity: 0.8;
+  }
+
+  .shortcut-message {
+    background: rgba(33, 53, 71, 0.7); /* Dark background with opacity for light mode */
+    color: #f9f6f1; /* Change text color */
   }
 }
 

@@ -1,7 +1,7 @@
 const ShortcutMessage = () => {
   return (
     <div className="shortcut-message">
-      Press <strong>Ctrl + Space</strong> to get a new park
+      Press <span className="key">Ctrl</span> + <span className="key">Space</span> to get a new park
     </div>
   );
 };
