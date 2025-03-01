@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
   const [playground, setPlayground] = useState(() => {
@@ -11,6 +11,7 @@ export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
   });
   const [lastRandomNumber, setLastRandomNumber] = useState(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleSpaceKey = (event) => {
     if (event.code === "Space" && event.ctrlKey) {
@@ -39,16 +40,21 @@ export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
     return () => {
       window.removeEventListener("keyup", handleSpaceKey);
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     const selectedPlayground = playgrounds.find((p) => p.id === playground);
-    if (selectedPlayground?.names?.official) {
+    if (location.pathname.includes("/playgrounds/") && selectedPlayground?.names?.official) {
       document.title = `Seesaw - ${selectedPlayground.names.official}`;
+    } else if (location.pathname === "/playgrounds") {
+      document.title = "Seesaw - All Playgrounds"; // Title for playgrounds route
+    } else {
+      document.title = "Seesaw - All Parks"; // Default title
     }
     // Store the selected playground ID in local storage
     localStorage.setItem("selectedPlaygroundId", playground);
-  }, [playground, playgrounds]);
+  }, [playground, playgrounds, location.pathname]);
 
   const selectedPlayground = playgrounds.find((p) => p.id === playground) || {};
   const ratings = Array.isArray(selectedPlayground.ratings) ? selectedPlayground.ratings : [];

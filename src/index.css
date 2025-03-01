@@ -51,7 +51,6 @@ tbody td {
 
 a {
   color: inherit; /* Inherits text color */
-  text-decoration: none; /* Removes underline from links */
   opacity: 0.8;
   transition: opacity 250ms ease-in-out; /* Adds transition for color change */
 }
@@ -87,6 +86,16 @@ li:last-child a {
   animation: fadeIn 250ms ease-in-out;
 }
 
+.shortcut-message {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  background: #f1f1f1;
+  border-top: 1px solid #ccc;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -97,6 +106,10 @@ li:last-child a {
   td,
   li a {
     border-color: hsla(208.4, 36.5%, 20.4%, 20%);
+  }
+
+  thead th {
+    border-bottom: 1px solid hsla(208.4, 36.5%, 20.4%, 20%); /* Add bottom border to th in light mode */
   }
 
   li a:hover {
