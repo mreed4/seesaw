@@ -3,9 +3,10 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { debounce } from "lodash";
+import { playgrounds } from "../data/data";
 
 // Custom hook to manage playground logic
-export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
+export const usePlaygroundLogic = (initialPlaygroundId) => {
   // State management
   const [playground, setPlayground] = useState(() => {
     const savedPlaygroundId = localStorage.getItem("selectedPlaygroundId");
@@ -64,7 +65,7 @@ export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
       document.title = "Seesaw - All Parks";
     }
     localStorage.setItem("selectedPlaygroundId", playground);
-  }, [playground, playgrounds, location.pathname]);
+  }, [playground, location.pathname]);
 
   // Calculate ratings and other playground details
   const selectedPlayground = playgrounds.find((p) => p.id === playground) || {};

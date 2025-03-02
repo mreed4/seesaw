@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import playgrounds from "../data/data";
+import { playgrounds } from "../data/data";
 
 const toKebabCase = (str) => {
   return str.toLowerCase().replace(/ /g, "-");

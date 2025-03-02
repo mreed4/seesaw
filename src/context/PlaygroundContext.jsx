@@ -3,7 +3,7 @@
 
 import { createContext, useContext } from "react";
 import { usePlaygroundLogic } from "../hooks/usePlaygroundLogic";
-import playgrounds from "../data/data";
+import { playgrounds } from "../data/data";
 
 const PlaygroundContext = createContext();
 

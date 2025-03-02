@@ -117,4 +117,22 @@ const playgrounds = [
   },
 ];
 
-export default playgrounds;
+const users = [
+  {
+    id: 1,
+    name: "John Doe",
+    email: "john.doe@example.com",
+    dateJoined: "2024-01-15T10:00:00Z",
+    favorites: [1, 2], // Array of favorite playground IDs
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    email: "jane.smith@example.com",
+    dateJoined: "2024-02-20T14:30:00Z",
+    favorites: [3],
+  },
+  // ...more users...
+];
+
+export { playgrounds, users };
