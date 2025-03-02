@@ -86,6 +86,35 @@ const playgrounds = [
     ],
     media: [],
   },
+  {
+    id: 4,
+    names: {
+      official: "Sunset Park",
+      nick: "Sunset Playground",
+    },
+    dateAdded: "2025-03-20T09:30:00Z",
+    yearBuilt: 2015,
+    coords: [36.778259, -119.417931],
+    address: ["123 Sunset Blvd", "Fresno", "CA", "93722"],
+    ageRange: [4, 14],
+    features: {
+      shaded: true,
+      waterPad: true,
+      trees: true,
+      grass: true,
+      playground: true,
+      restroom: true,
+      gated: true,
+    },
+    ratings: [60, 8],
+    feedback: [
+      { id: 17, userId: 42, review: "Fantastic playground with lots of activities.", rating: "Like" },
+      { id: 18, userId: 43, review: "Kids had a blast!", rating: "Like" },
+      { id: 19, userId: 44, review: "Very clean and well-maintained.", rating: "Like" },
+      { id: 20, userId: 45, review: "Can get crowded during weekends.", rating: "Dislike" },
+    ],
+    media: [],
+  },
 ];
 
 export default playgrounds;

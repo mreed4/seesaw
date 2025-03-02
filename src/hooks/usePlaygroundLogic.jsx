@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { debounce } from "lodash";
 
 // Custom hook to manage playground logic
 export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
@@ -16,15 +17,17 @@ export const usePlaygroundLogic = (playgrounds, initialPlaygroundId) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Event handler for space key
-  const handleSpaceKey = (event) => {
+  // Debounced event handler for space key
+  const handleSpaceKey = debounce((event) => {
     if (event.code === "Space" && event.ctrlKey) {
       const newRandomNumber = generateUniqueRandomNumber(playgrounds.length, lastRandomNumber);
       setLastRandomNumber(newRandomNumber);
       setPlayground(playgrounds[newRandomNumber].id);
       navigateToPlayground(playgrounds[newRandomNumber]);
+    } else {
+      console.log("Debounced: Excessive call blocked");
     }
-  };
+  }, 300);
 
   // Generate a unique random number
   const generateUniqueRandomNumber = (max, lastNumber) => {
