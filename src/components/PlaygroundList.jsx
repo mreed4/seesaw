@@ -16,7 +16,6 @@ const PlaygroundList = () => {
         </thead>
         <tbody>
           {playgrounds.map(({ id, address, names, yearBuilt }) => {
-            // const { id, address, names, yearBuilt } = playground;
             // eslint-disable-next-line no-unused-vars
             const [street, city, state, zip] = address;
             return (
