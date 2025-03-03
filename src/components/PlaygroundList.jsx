@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
 import { playgrounds } from "../data/data";
-import { kebabCase } from "lodash";
+
+import PlaygroundLink from "./PlaygroundLink";
 
 const PlaygroundList = () => {
   return (
@@ -19,13 +19,10 @@ const PlaygroundList = () => {
             // const { id, address, names, yearBuilt } = playground;
             // eslint-disable-next-line no-unused-vars
             const [street, city, state, zip] = address;
-            const { official: name } = names;
             return (
               <tr key={id}>
                 <td>
-                  <Link to={`/playground/${kebabCase(city)}/${kebabCase(name)}`} state={{ id }}>
-                    {name}
-                  </Link>
+                  <PlaygroundLink playground={{ id, names, address }} />
                 </td>
                 <td>{city}</td>
                 <td>{yearBuilt || "-"}</td>

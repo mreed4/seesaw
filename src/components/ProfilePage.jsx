@@ -1,6 +1,7 @@
 import { playgrounds, users } from "../data/data";
-import { useParams, Link } from "react-router-dom";
-import { kebabCase } from "lodash";
+import { useParams } from "react-router-dom";
+
+import PlaygroundLink from "./PlaygroundLink";
 
 const ProfilePage = () => {
   const { userId } = useParams();
@@ -25,14 +26,12 @@ const ProfilePage = () => {
         </thead>
         <tbody>
           {favoritePlaygrounds.map(({ id, names, address }) => {
+            // eslint-disable-next-line no-unused-vars
             const [street, city, state, zip] = address;
-            const { official: name } = names;
             return (
               <tr key={id}>
                 <td>
-                  <Link to={`/playground/${kebabCase(city)}/${kebabCase(name)}`} state={{ id }}>
-                    {name}
-                  </Link>
+                  <PlaygroundLink playground={{ id, names, address }} />
                 </td>
                 <td>{city}</td>
               </tr>
