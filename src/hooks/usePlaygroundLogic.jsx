@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { debounce } from "lodash";
+import { debounce, kebabCase } from "lodash";
 import { playgrounds } from "../data/data";
 
 // Custom hook to manage playground logic
@@ -42,7 +42,7 @@ export const usePlaygroundLogic = (initialPlaygroundId) => {
   // Navigate to a specific playground
   const navigateToPlayground = (playground) => {
     const { address, names } = playground;
-    navigate(`/playgrounds/${toKebabCase(address[1])}/${toKebabCase(names.official)}`);
+    navigate(`/playground/${kebabCase(address[1])}/${kebabCase(names.official)}`);
   };
 
   // Effect to handle keyup event
@@ -57,12 +57,12 @@ export const usePlaygroundLogic = (initialPlaygroundId) => {
   // Effect to update document title and local storage
   useEffect(() => {
     const selectedPlayground = playgrounds.find((p) => p.id === playground);
-    if (location.pathname.includes("/playgrounds/") && selectedPlayground?.names?.official) {
+    if (location.pathname.includes("/playground/") && selectedPlayground?.names?.official) {
       document.title = `Seesaw - ${selectedPlayground.names.official}`;
     } else if (location.pathname === "/playgrounds") {
       document.title = "Seesaw - All Playgrounds";
     } else {
-      document.title = "Seesaw - All Parks";
+      document.title = "Seesaw - All Playgrounds";
     }
     localStorage.setItem("selectedPlaygroundId", playground);
   }, [playground, location.pathname]);
@@ -99,9 +99,4 @@ const getAgeOfPlayground = (yearBuilt) => {
   if (yearBuilt === currentYear) return "(this year 🎉)";
   if (currentYear - yearBuilt === 1) return "(last year)";
   return `(${currentYear - yearBuilt} years ago)`;
-};
-
-// Helper function to convert string to kebab case
-const toKebabCase = (str) => {
-  return str.toLowerCase().replace(/ /g, "-");
 };
